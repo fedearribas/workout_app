@@ -5,6 +5,12 @@ class ExercisesController < ApplicationController
   
   def index
     @exercises = current_user.exercises.all
+    @hash_grouped = @exercises.group(:workout_date).sum(:duration_in_min)
+    @exer_grouped = Array.new
+    @hash_grouped.each do |k, v|
+      @exer_grouped << @hash_grouped = {:workout_date => k, :duration_in_min => v }
+    end
+   
   end
   
   def show

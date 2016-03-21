@@ -18,7 +18,7 @@
           <td><%= truncate(exercise.workout, length: 100) %></td>
           <td><%= exercise.workout_date %></td>
           <td><%= link_to "Show", [current_user, exercise] %></td>
-          <td><%= link_to "Edit", [current_user, exercise] %></td>
+          <td><%= link_to "Edit", edit_user_exercise_path(current_user, exercise) %></td>
           <td><%= link_to "Delete", [current_user, exercise], method: :delete, 
                                     data: {confirm: "Are you sure?"} %></td>
         </tr>
@@ -34,6 +34,6 @@
   <% end %>
   
   <%= link_to "New Workout", new_user_exercise_path(current_user), class: "btn btn-primary link" %>
-  
-  <%= content_tag :div, "", id:"chart", data: {workouts: @exercises} %>
+ 
+   <%= content_tag :div, "", id:"chart", data: {workouts: @exercises} %>
 </div>

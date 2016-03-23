@@ -6,6 +6,7 @@ class ExercisesController < ApplicationController
   def index
     @exercises = current_user.exercises.all
     @exer_grouped = current_user.exercises.all_grouped_for_graph
+    @friends = current_user.friends
   end
   
   def show

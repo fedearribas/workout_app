@@ -14,6 +14,16 @@ class FriendshipsController < ApplicationController
     @exercises_grouped = @friend.exercises.all_grouped_for_graph
   end
   
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    if @friendship.destroy
+      flash[:success] = "#{@friendship.friend.full_name} unfollowed"
+    else
+      flash[:danger] = "#{@friendship.friend.full_name} could not been unfollowed"
+    end
+    redirect_to user_exercises_path(current_user)
+  end
+  
   private
     def friendship_params
       params.permit(:friend_id, :user_id)
